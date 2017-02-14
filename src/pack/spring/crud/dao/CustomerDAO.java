@@ -13,7 +13,7 @@ public interface CustomerDAO {
 	public Customer getCustomerByEmail(String email);
 	public void createCustomer(Customer customer);
 	public void deleteCustomerById(int id);
-	
+	public List<Customer> search(String data);
 	
 
 }

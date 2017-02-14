@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -100,6 +101,12 @@
 
 
 		<div class="col-lg-12 well well-sm text-left ">
+		<form:form action="search" method="POST">
+				Search Customer: <input type="textbox" name="theSearchName" />
+				
+				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
+			</form:form>
+		
 			<h4 class="text-primary text-center">
 				<strong>Customer Table</strong> <br>
 				<br>

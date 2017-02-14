@@ -12,4 +12,5 @@ public interface CustomerService {
 	public void createCustomer(Customer customer);
 	public void deleteCustomerById(int id);
 	public List<Customer> getAllAbsoluteCustomer();
+	public List<Customer> search(String data);
 }

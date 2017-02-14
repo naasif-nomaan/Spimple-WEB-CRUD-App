@@ -1,5 +1,6 @@
 package pack.spring.crud.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -53,6 +54,19 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public List<Customer> getAllAbsoluteCustomer() {
 		return customerDAO.getAllAbsoluteCustomer();	
+	}
+
+	@Override
+	public List<Customer> search(String data) {
+		List<Customer> customers= customerDAO.search(data);
+		for (Iterator<Customer> iter = customers.listIterator(); iter.hasNext(); ) {
+		    Customer a = iter.next();
+		    if(a.getEnabled().equals("false")){
+		    	iter.remove();
+		    }
+		    
+		}
+		return customers;
 	}
 	
 	

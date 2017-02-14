@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pack.spring.crud.dao.CustomerDAO;
 import pack.spring.crud.service.CustomerService;
@@ -24,6 +26,14 @@ public class HomeController {
 	public String showAbout(Model model){
 		
 		return "about";
+	}
+	
+	@PostMapping("/search")
+	public String search(@RequestParam("theSearchName")String data, Model model){
+		
+		model.addAttribute("customers", customerService.search(data));
+		
+		return "index";
 	}
 
 }
