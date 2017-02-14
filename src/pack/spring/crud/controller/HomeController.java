@@ -11,7 +11,7 @@ import pack.spring.crud.service.CustomerService;
 @Controller
 public class HomeController {
 	@Autowired
-	CustomerService customerService;
+	CustomerService customerService; // Customer Service
 		
 	
 	
