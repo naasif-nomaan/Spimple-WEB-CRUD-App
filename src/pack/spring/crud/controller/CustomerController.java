@@ -1,16 +1,25 @@
 package pack.spring.crud.controller;
 
-import org.hibernate.Session;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.xml.internal.org.jvnet.staxex.NamespaceContextEx.Binding;
 
 import pack.spring.crud.dao.CustomerDAO;
 import pack.spring.crud.entity.Customer;
@@ -23,11 +32,9 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	
-	
-	
 	@GetMapping("/customermanagement")
 	public String showManagement(){
-		
+	
 		return "CustomerManagement";
 	}
 	
@@ -43,20 +50,40 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/create")
-	public String creteCustomer(@ModelAttribute("customer") Customer theCustomer, Model model){
-		
-		
+	public String creteCustomer(  Model model , @Valid @ModelAttribute("customer") Customer theCustomer, BindingResult result ){
 	
-	
-			customerService.createCustomer(theCustomer);
+	     if(result.hasErrors()){
+	    	 
+	    	 List<ObjectError> errors =result.getAllErrors();
+	    	 for (ObjectError objectError : errors) {
+				System.out.println(objectError.getDefaultMessage());
+			}
+	    	 return "newCustomer";
+	    	 
+	     }
+	        customerService.createCustomer(theCustomer);
 			model.addAttribute("customers",customerService.getAllCustomer());
 			return "index";
 		
+		
+	
+	
+			
+		
 	}
+	
 	@PostMapping("/update")
-	public String updateCustomer(@ModelAttribute("customer") Customer theCustomer, Model model){
+	public String updateCustomer( Model model , @Valid @ModelAttribute("customer") Customer theCustomer, BindingResult result){
 		
-		
+         if(result.hasErrors()){
+	    	 
+	    	 List<ObjectError> errors =result.getAllErrors();
+	    	 for (ObjectError objectError : errors) {
+				System.out.println(objectError.getDefaultMessage());
+			}
+	    	 return "update";
+	    	 
+	     }
 	
 	
 			customerService.createCustomer(theCustomer);

@@ -92,52 +92,63 @@
 	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-lg">
-			<h3 class="text-center text-primary">Create a New Customer</h3>
+			<h3 class="text-center text-primary">Update Customer</h3>
 
 		</div>
 
 
-		<div class="col-lg-1"></div>
+		<div class="col-lg-2"></div>
 
-		<div class="col-lg-10 well well-sm text-left ">
+		<div class="col-lg-8 well well-sm text-left ">
 			<h4 class="text-primary text-center">
-				<strong>Customer Registration </strong> <br>
+				<strong>Customer Update Form </strong> <br>
 				<br>
 			</h4>
-			<form:form class="" onsubmit="return validateForm()"
+<form:form class="form" onsubmit="return validateForm()"
 				action="${pageContext.request.contextPath}/update" id="create"
 				modelAttribute="customer" method="POST">
 
 				<form:hidden path="id" />
 				<dt class="text-primary">First Name:</dt>
-				<form:input path="firstName" />
+				<form:input path="firstName"  cssClass="form-control"/>
+				
+				<form:errors path="firstName" cssClass="text-danger" >
+				</form:errors>
+			<br/>
+				
 				<dt class="text-primary">Last Name:</dt>
-				<form:input path="lastName" />
-				<br>
+				<form:input path="lastName"  cssClass="form-control" />
+				<form:errors path="lastName" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Email:</dt>
-				<form:input path="email" />
-				<br>
+				<form:input path="email"  cssClass="form-control"/>
+				<form:errors path="email" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Address:</dt>
-				<form:textarea path="address" />
-				<br>
+				<form:textarea path="address" rows="5" cssClass="form-control" />
+					<form:errors path="address" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Mobile Number:</dt>
-				<form:input path="mobile_no" />
-				<dt class="text-primary">Active or Inactive:</dt>
-				<form:select path="enabled">
+				<form:input path="mobile_no" cssClass="form-control" />
+				<br>
+				<dt class="text-primary">Active or Inactive: <form:select path="enabled" cssClass="text-warning">
 					<option value="false">False</option>
 					<option value="true">True</option>
-				</form:select>
+				</form:select></dt>
+				
 
-				<br><br>
-				<input type="submit" value="Update" />
+				<br>
+				<br>
+				
+				   <a class="btn btn-primary btn-sml pull-right"  type="button" href="${pageContext.request.contextPath}/editcustomer">Back to Editor Table</a>
+				<input type="submit" value="Update" class="btn btn-success pull-center" /> 
 			</form:form>
-<br>
-              <a class="btn btn-primary btn-sml"  type="button" href="${pageContext.request.contextPath}/editcustomer">Back to Editor Table</a>
 
+           
 
 
 		</div>
-		<div class="col-sm-1"></div>
+		<div class="col-sm-2"></div>
 	</div>
 	<!-- Custom Code Ends Here -->
 

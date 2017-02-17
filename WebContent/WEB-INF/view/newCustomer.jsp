@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -97,9 +98,9 @@
 		</div>
 
 
-		<div class="col-lg-1"></div>
+		<div class="col-lg-2"></div>
 
-		<div class="col-lg-10 well well-sm text-left ">
+		<div class="col-lg-8 well well-sm text-left ">
 			<h4 class="text-primary text-center">
 				<strong>Customer Registration </strong> <br>
 				<br>
@@ -110,28 +111,38 @@
 
 				<form:hidden path="id" />
 				<dt class="text-primary">First Name:</dt>
-				<form:input path="firstName" />
+				<form:input path="firstName"  cssClass="form-control"/>
+				
+				<form:errors path="firstName" cssClass="text-danger" >
+				</form:errors>
+			<br/>
+				
 				<dt class="text-primary">Last Name:</dt>
-				<form:input path="lastName" />
-				<br>
+				<form:input path="lastName"  cssClass="form-control" />
+				<form:errors path="lastName" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Email:</dt>
-				<form:input path="email" />
-				<br>
+				<form:input path="email"  cssClass="form-control"/>
+				<form:errors path="email" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Address:</dt>
-				<form:textarea path="address" />
-				<br>
+				<form:textarea path="address" rows="5" cssClass="form-control" />
+					<form:errors path="address" cssClass="text-danger"></form:errors>
+				<br/>
 				<dt class="text-primary">Mobile Number:</dt>
-				<form:input path="mobile_no" />
+				<form:input path="mobile_no" cssClass="form-control" />
 				<br>
-				<dt class="text-primary">Active or Inactive:</dt>
-				<form:select path="enabled">
+				<dt class="text-primary">Active or Inactive: <form:select path="enabled" cssClass="text-warning">
 					<option value="false">False</option>
 					<option value="true">True</option>
-				</form:select>
+				</form:select></dt>
+				
 
 				<br>
 				<br>
-				<input type="submit" value="Register" />
+				
+				  
+				<input type="submit" value="Register" class="btn btn-primary pull-center" /> 
 			</form:form>
 
 
@@ -139,7 +150,7 @@
 
 
 		</div>
-		<div class="col-sm-1"></div>
+		<div class="col-sm-2"></div>
 	</div>
 	<!-- Custom Code Ends Here -->
 
