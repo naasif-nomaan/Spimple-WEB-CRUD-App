@@ -42,9 +42,10 @@ public class Customer {
 	private String address;
 	
 	@Column(name="mobile_no")
-	@NotNull
 	@Mobile
-	@Pattern(regexp="(^$|[0-9]{11})", message="please enter a valid mobile number and it must be at least 11 digits")
+	@NotNull
+	@Size(min=1, message="Mobile Number Shouldn't be empty")
+	@Pattern(regexp="(^$|[0-9]{11})", message="please enter a valid mobile number and it must be 11 digits")
 	private String mobile_no;
 	
 	@Column(name="enabled")
