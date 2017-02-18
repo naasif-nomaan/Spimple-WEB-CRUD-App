@@ -42,6 +42,9 @@ public class Customer {
 	private String address;
 	
 	@Column(name="mobile_no")
+	@NotNull
+	@Mobile
+	@Size(min=11, max=50,message="Mobile number must be at least 11 digits")
 	private String mobile_no;
 	
 	@Column(name="enabled")

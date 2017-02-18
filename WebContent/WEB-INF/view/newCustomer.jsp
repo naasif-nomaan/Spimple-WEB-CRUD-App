@@ -132,6 +132,7 @@
 				<br/>
 				<dt class="text-primary">Mobile Number:</dt>
 				<form:input path="mobile_no" cssClass="form-control" />
+				<form:errors path="mobile_no" cssClass="text-danger"></form:errors>
 				<br>
 				<dt class="text-primary">Active or Inactive: <form:select path="enabled" cssClass="text-warning">
 					<option value="false">False</option>
