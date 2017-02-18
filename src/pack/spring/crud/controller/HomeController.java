@@ -30,14 +30,27 @@ public class HomeController {
 	
 	@PostMapping("/search")
 	public String search(@RequestParam("theSearchName")String data, Model model){
-		
+		if(data.equals("")){
+			model.addAttribute("msg", "Please Write Something to search!");
+			model.addAttribute("customers", customerService.search(data));
+			return "search";
+		}
+		model.addAttribute("msg",data);
 		model.addAttribute("customers", customerService.search(data));
 		
 		return "search";
 	}
+	
+	
+	
 	@PostMapping("/searchall")
 	public String searchall(@RequestParam("theSearchName")String data, Model model){
-		
+		if(data.equals("")){
+			model.addAttribute("msg", "Please Write Something to search!");
+			model.addAttribute("customers", customerService.searchAll(data));
+			return "searchall";
+		}
+		model.addAttribute("msg",data);
 		model.addAttribute("customers", customerService.searchAll(data));
 		
 		return "searchall";

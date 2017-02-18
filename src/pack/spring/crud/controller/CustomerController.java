@@ -54,11 +54,6 @@ public class CustomerController {
 	public String creteCustomer(  Model model , @Valid @ModelAttribute("customer") Customer theCustomer, BindingResult result ){
 	
 	     if(result.hasErrors()){
-	    	 
-	    	 List<ObjectError> errors =result.getAllErrors();
-	    	 for (ObjectError objectError : errors) {
-				System.out.println(objectError.getDefaultMessage());
-			}
 	    	 // checking email address is already exists or not 
 		     for(Iterator<Customer> itarator=customerService.getAllAbsoluteCustomer().listIterator(); itarator.hasNext();){
 		    	Customer c=itarator.next();
@@ -108,11 +103,7 @@ public class CustomerController {
 	public String updateCustomer( Model model , @Valid @ModelAttribute("customer") Customer theCustomer, BindingResult result){
 		
          if(result.hasErrors()){
-	    	 
-	    	 List<ObjectError> errors =result.getAllErrors();
-	    	 for (ObjectError objectError : errors) {
-				System.out.println(objectError.getDefaultMessage());
-			}
+
 	    	 return "update";
 	    	 
 	     }

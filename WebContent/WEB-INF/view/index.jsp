@@ -101,15 +101,14 @@
 
 
 		<div class="col-lg-12 well well-sm text-left ">
-		<form:form action="search" method="POST">
-				Search Customer: <input type="textbox" name="theSearchName" />
-				
+			<form:form action="search" method="POST">
+					Search Customer: <input type="textbox" name="theSearchName" />
+
 				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
 			</form:form>
-		
+
 			<h4 class="text-primary text-center">
-				<strong>Customer Table</strong> <br>
-				<br>
+				<strong>Customer Table</strong> <br> <br>
 			</h4>
 
 			<table id="table" class="table table-hover">

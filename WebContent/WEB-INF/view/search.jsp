@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -66,20 +66,15 @@
 
 
 				</ul>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<ul class="nav navbar-nav">
-					<li ><a
-						href="${pageContext.request.contextPath}/"> <strong>All
+					<li><a href="${pageContext.request.contextPath}/"> <strong>All
 								Customers</strong></a></li>
-					<li ><a
+					<li><a
 						href="${pageContext.request.contextPath}/customermanagement">
 							<Strong>Customer Manager</Strong>
 					</a></li>
-            <li ><a 
-						href="${pageContext.request.contextPath}/about">
-							<Strong>About</Strong>
+					<li><a href="${pageContext.request.contextPath}/about"> <Strong>About</Strong>
 					</a></li>
 
 
@@ -101,24 +96,45 @@
 			<h3 class="text-center text-primary">Search into Database</h3>
 
 		</div>
-		
 
-		<div class="col-lg-1"></div>
 
-		<div class="col-lg-10 well well-sm text-left ">
-				<form:form action="search" method="POST">
-				Search Customer: <input type="textbox" name="theSearchName" />
-				
+
+
+		<div class="col-lg-12 well well-sm text-left ">
+			<form:form action="search" method="POST">
+					Search Customer: <input type="textbox" name="theSearchName" />
+
 				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
 			</form:form>
-	
+			<c:if test="${msg.equals('Please Write Something to search!')}">
+				<h5 class="text-danger text-left">
+					<strong>${msg}</strong>
+				</h5>
+			</c:if>
+			<c:if
+				test="${msg.equals('Please Write Something to search!')==false}">
+				<h5 class="text-info text-left">
+					Search Result for :<strong class="text-success">${msg}</strong>
+				</h5>
+			</c:if>
 			<h4 class="text-primary text-center">
-				<strong>Search Result</strong> <br><br></h4>
-								<table id="table" class="table table-hover">
-	 <a class="btn btn-primary btn-sml pull-right"  type="button" href="${pageContext.request.contextPath}/">Back to Home</a>
-	 <br>
-	 <br>
-                <tr class="text-primary info">
+				<strong>Search Result</strong> <br>
+				<br>
+
+			</h4>
+			<c:if test="${customers.size()==0}">
+				<h5 class="text-warning text-center">
+					<strong>Nothing Found!</strong>
+				</h5>
+			</c:if>
+			<table id="table" class="table table-hover">
+				<a class="btn btn-primary btn-sml pull-right" type="button"
+					href="${pageContext.request.contextPath}/">Back to Home</a>
+				<br>
+
+
+				<br>
+				<tr class="text-primary info">
 					<th class="text-center ">First Name</th>
 					<th class="text-center">Last Name</th>
 					<th class="text-center">Email</th>
@@ -126,28 +142,30 @@
 					<th class="text-center">Address</th>
 					<th class="text-center">Enabled</th>
 				</tr>
-			<c:forEach var="tempCustomer" items="${customers}">
-			<tr class="text-center ">
-                   <td> ${tempCustomer.firstName} </td>
-					<td> ${tempCustomer.lastName} </td>
-					<td> ${tempCustomer.email} </td>
-					<td> ${tempCustomer.mobile_no} </td>
-					<td> ${tempCustomer.address} </td>
-					<td> ${tempCustomer.enabled} </td>
 
-				</tr>
-			
-			
-			</c:forEach>
-				
-				
-				
-</table>	
+				<c:forEach var="tempCustomer" items="${customers}">
 
-					
-				
+					<tr class="text-center ">
+						<td>${tempCustomer.firstName}</td>
+						<td>${tempCustomer.lastName}</td>
+						<td>${tempCustomer.email}</td>
+						<td>${tempCustomer.mobile_no}</td>
+						<td>${tempCustomer.address}</td>
+						<td>${tempCustomer.enabled}</td>
+
+					</tr>
+
+
+				</c:forEach>
+
+
+
+			</table>
+
+
+
 		</div>
-		<div class="col-sm-1"></div>
+
 	</div>
 	<!-- Custom Code Ends Here -->
 

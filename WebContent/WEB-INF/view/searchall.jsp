@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,20 +66,15 @@
 
 
 				</ul>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<ul class="nav navbar-nav">
-					<li ><a
-						href="${pageContext.request.contextPath}/"> <strong>All
+					<li><a href="${pageContext.request.contextPath}/"> <strong>All
 								Customers</strong></a></li>
-					<li ><a
+					<li><a
 						href="${pageContext.request.contextPath}/customermanagement">
 							<Strong>Customer Manager</Strong>
 					</a></li>
-            <li ><a 
-						href="${pageContext.request.contextPath}/about">
-							<Strong>About</Strong>
+					<li><a href="${pageContext.request.contextPath}/about"> <Strong>About</Strong>
 					</a></li>
 
 
@@ -98,27 +93,46 @@
 	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-lg">
-			<h3 class="text-center text-primary">Search in Database</h3>
+			<h3 class="text-center text-primary">Search into Database</h3>
 
 		</div>
-		
 
-		<div class="col-lg-1"></div>
 
-		<div class="col-lg-10 well well-sm text-left ">
-				<form:form action="searchall" method="POST">
+
+
+		<div class="col-lg-12 well well-sm text-left ">
+			<form:form action="searchall" method="POST">
 				Search Customer: <input type="textbox" name="theSearchName" />
-				
+
 				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
 			</form:form>
-	
+			<c:if test="${msg.equals('Please Write Something to search!')}">
+				<h5 class="text-danger text-left">
+					<strong>${msg}</strong>
+				</h5>
+			</c:if>
+			<c:if
+				test="${msg.equals('Please Write Something to search!')==false}">
+				<h5 class="text-info text-left">
+					Search Result for :<strong class="text-success">${msg}</strong>
+				</h5>
+			</c:if>
 			<h4 class="text-primary text-center">
-				<strong>Search Result</strong> <br><br></h4>
-								<table id="table" class="table table-hover">
-	 <a class="btn btn-primary btn-sml pull-right"  type="button" href="${pageContext.request.contextPath}/editcustomer">Back to Editor Table</a>
-	 <br>
-	 <br>
-                <tr class="text-primary info">
+				<strong>Search Result</strong> <br>
+				<br>
+			</h4>
+			<c:if test="${customers.size()==0}">
+				<h5 class="text-warning text-center">
+					<strong>Nothing Found!</strong>
+				</h5>
+			</c:if>
+			<table id="table" class="table table-hover">
+				<a class="btn btn-primary btn-sml pull-right" type="button"
+					href="${pageContext.request.contextPath}/editcustomer">Back to
+					Editor Table</a>
+				<br>
+				<br>
+				<tr class="text-primary info">
 					<th class="text-center ">First Name</th>
 					<th class="text-center">Last Name</th>
 					<th class="text-center">Email</th>
@@ -127,41 +141,36 @@
 					<th class="text-center">Enabled</th>
 					<th class="text-center">Edit or Delete</th>
 				</tr>
-			<c:forEach var="tempCustomer" items="${customers}">
-			<tr class="text-center ">
-                   <td> ${tempCustomer.firstName} </td>
-					<td> ${tempCustomer.lastName} </td>
-					<td> ${tempCustomer.email} </td>
-					<td> ${tempCustomer.mobile_no} </td>
-					<td> ${tempCustomer.address} </td>
-					<td> ${tempCustomer.enabled} </td>
-					<td>
-					<c:url var="updateLink" value="/editcustomerby">
-								<c:param name="customerId" value="${tempCustomer.id}" />
-							</c:url> 
-				   <c:url var="deleteLink" value="/deleteLink">
-								<c:param name="customerId" value="${tempCustomer.id}" />
-							</c:url> 
-				
-				  <a href="${updateLink}">Edit</a> 
-				  | 
-				  <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this Customer?'))) return false">
-								Delete</a>
 
-						</td>
-				</tr>
-			
-			
-			</c:forEach>
-				
-				
-				
-</table>	
+				<c:forEach var="tempCustomer" items="${customers}">
 
-					
-				
+					<tr class="text-center ">
+						<td>${tempCustomer.firstName}</td>
+						<td>${tempCustomer.lastName}</td>
+						<td>${tempCustomer.email}</td>
+						<td>${tempCustomer.mobile_no}</td>
+						<td>${tempCustomer.address}</td>
+						<td>${tempCustomer.enabled}</td>
+						<td><c:url var="updateLink" value="/editcustomerby">
+								<c:param name="customerId" value="${tempCustomer.id}" />
+							</c:url> <c:url var="deleteLink" value="/deleteLink">
+								<c:param name="customerId" value="${tempCustomer.id}" />
+							</c:url> <a href="${updateLink}">Edit</a> | <a href="${deleteLink}"
+							onclick="if (!(confirm('Are you sure you want to delete this Customer?'))) return false">
+								Delete</a></td>
+					</tr>
+
+
+				</c:forEach>
+
+
+
+			</table>
+
+
+
 		</div>
-		<div class="col-sm-1"></div>
+
 	</div>
 	<!-- Custom Code Ends Here -->
 
