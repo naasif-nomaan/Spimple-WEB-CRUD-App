@@ -1,4 +1,4 @@
-# Spimple-WEB-CRUD-App
+# Spring-Hibernate-CRUD-App
 A simple CRUD Web App using Spring MVC-Hibernate and MySql database.
 
 
