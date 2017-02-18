@@ -38,7 +38,7 @@ public class Customer {
 	
 	@Column(name="address")
 	@NotNull
-	@Size(min=20, max=250,message="Address should be between 20 to 250 char")
+	@Size(min=10, max=250,message="Address should be between 10 to 250 char")
 	private String address;
 	
 	@Column(name="mobile_no")

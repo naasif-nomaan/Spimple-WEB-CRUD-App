@@ -121,7 +121,7 @@
 				<form:errors path="lastName" cssClass="text-danger"></form:errors>
 				<br/>
 				<dt class="text-primary">Email:</dt>
-				<form:input path="email"  cssClass="form-control"/>
+				<form:input path="email"  cssClass="form-control" readonly="true"/>
 				<form:errors path="email" cssClass="text-danger"></form:errors>
 				<br/>
 				<dt class="text-primary">Address:</dt>

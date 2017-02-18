@@ -68,6 +68,12 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 		return customers;
 	}
+
+	@Override
+	public List<Customer> searchAll(String data) {
+		List<Customer> customers= customerDAO.search(data);
+		return customers;
+	}
 	
 	
 	

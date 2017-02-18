@@ -14,7 +14,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>Edit Customer | CRUD WEB APP</title>
+<title>Search Result | CRUD WEB APP</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -98,7 +98,7 @@
 	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-lg">
-			<h3 class="text-center text-primary">Edit Customer</h3>
+			<h3 class="text-center text-primary">Search in Database</h3>
 
 		</div>
 		
@@ -111,11 +111,13 @@
 				
 				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
 			</form:form>
-		
+	
 			<h4 class="text-primary text-center">
-				<strong>Edit Customer Table</strong> <br><br></h4>
+				<strong>Search Result</strong> <br><br></h4>
 								<table id="table" class="table table-hover">
-
+	 <a class="btn btn-primary btn-sml pull-right"  type="button" href="${pageContext.request.contextPath}/editcustomer">Back to Editor Table</a>
+	 <br>
+	 <br>
                 <tr class="text-primary info">
 					<th class="text-center ">First Name</th>
 					<th class="text-center">Last Name</th>

@@ -124,6 +124,7 @@
 				<dt class="text-primary">Email:</dt>
 				<form:input path="email"  cssClass="form-control"/>
 				<form:errors path="email" cssClass="text-danger"></form:errors>
+				<p class="text-danger">${mes}</p>
 				<br/>
 				<dt class="text-primary">Address:</dt>
 				<form:textarea path="address" rows="5" cssClass="form-control" />

@@ -33,7 +33,14 @@ public class HomeController {
 		
 		model.addAttribute("customers", customerService.search(data));
 		
-		return "index";
+		return "search";
+	}
+	@PostMapping("/searchall")
+	public String searchall(@RequestParam("theSearchName")String data, Model model){
+		
+		model.addAttribute("customers", customerService.searchAll(data));
+		
+		return "searchall";
 	}
 
 }

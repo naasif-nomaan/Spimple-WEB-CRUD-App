@@ -1,5 +1,6 @@
 package pack.spring.crud.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -58,17 +59,48 @@ public class CustomerController {
 	    	 for (ObjectError objectError : errors) {
 				System.out.println(objectError.getDefaultMessage());
 			}
+	    	 // checking email address is already exists or not 
+		     for(Iterator<Customer> itarator=customerService.getAllAbsoluteCustomer().listIterator(); itarator.hasNext();){
+		    	Customer c=itarator.next();
+		    	if(c.getEmail().equals(theCustomer.getEmail())){
+		    		
+		    		if(c.getEnabled().equals("true")){
+		    			 model.addAttribute("mes", "This email already exists! and Enabled");
+	    		    	 return "newCustomer";
+		    		}else{
+		    			  model.addAttribute("mes", "This email already exists! and Disabled");
+		    		    	 return "newCustomer";
+		    		}
+		    		
+		    	}
+		     }
 	    	 return "newCustomer";
 	    	 
 	     }
-	        customerService.createCustomer(theCustomer);
-			model.addAttribute("customers",customerService.getAllCustomer());
-			return "index";
-		
-		
-	
-	
+	     
+	     
+	    // checking email address is already exists or not 
+	     for(Iterator<Customer> itarator=customerService.getAllAbsoluteCustomer().listIterator(); itarator.hasNext();){
+	    	Customer c=itarator.next();
+	    	if(c.getEmail().equals(theCustomer.getEmail())){
+	    		
+	    		if(c.getEnabled().equals("true")){
+	    			 model.addAttribute("mes", "This email already exists! and Enabled");
+    		    	 return "newCustomer";
+	    		}else{
+	    			  model.addAttribute("mes", "This email already exists! and Disabled");
+	    		    	 return "newCustomer";
+	    		}
+	    		
+	    	}
+	     }
+	     
+	    	  customerService.createCustomer(theCustomer);
+				model.addAttribute("customers",customerService.getAllCustomer());
+				return "index";
 			
+	     
+
 		
 	}
 	

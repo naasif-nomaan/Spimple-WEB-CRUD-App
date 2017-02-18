@@ -13,4 +13,5 @@ public interface CustomerService {
 	public void deleteCustomerById(int id);
 	public List<Customer> getAllAbsoluteCustomer();
 	public List<Customer> search(String data);
+	public List<Customer> searchAll(String data);
 }

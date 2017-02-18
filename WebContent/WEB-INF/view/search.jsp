@@ -14,7 +14,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>Edit Customer | CRUD WEB APP</title>
+<title>Search Result | CRUD WEB APP</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -98,7 +98,7 @@
 	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-lg">
-			<h3 class="text-center text-primary">Edit Customer</h3>
+			<h3 class="text-center text-primary">Search into Database</h3>
 
 		</div>
 		
@@ -106,16 +106,18 @@
 		<div class="col-lg-1"></div>
 
 		<div class="col-lg-10 well well-sm text-left ">
-				<form:form action="searchall" method="POST">
+				<form:form action="search" method="POST">
 				Search Customer: <input type="textbox" name="theSearchName" />
 				
 				<input type="submit" value="Search" class="btn btn-primary btn-sm" />
 			</form:form>
-		
+	
 			<h4 class="text-primary text-center">
-				<strong>Edit Customer Table</strong> <br><br></h4>
+				<strong>Search Result</strong> <br><br></h4>
 								<table id="table" class="table table-hover">
-
+	 <a class="btn btn-primary btn-sml pull-right"  type="button" href="${pageContext.request.contextPath}/">Back to Home</a>
+	 <br>
+	 <br>
                 <tr class="text-primary info">
 					<th class="text-center ">First Name</th>
 					<th class="text-center">Last Name</th>
@@ -123,7 +125,6 @@
 					<th class="text-center">Mobile Number</th>
 					<th class="text-center">Address</th>
 					<th class="text-center">Enabled</th>
-					<th class="text-center">Edit or Delete</th>
 				</tr>
 			<c:forEach var="tempCustomer" items="${customers}">
 			<tr class="text-center ">
@@ -133,20 +134,7 @@
 					<td> ${tempCustomer.mobile_no} </td>
 					<td> ${tempCustomer.address} </td>
 					<td> ${tempCustomer.enabled} </td>
-					<td>
-					<c:url var="updateLink" value="/editcustomerby">
-								<c:param name="customerId" value="${tempCustomer.id}" />
-							</c:url> 
-				   <c:url var="deleteLink" value="/deleteLink">
-								<c:param name="customerId" value="${tempCustomer.id}" />
-							</c:url> 
-				
-				  <a href="${updateLink}">Edit</a> 
-				  | 
-				  <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this Customer?'))) return false">
-								Delete</a>
 
-						</td>
 				</tr>
 			
 			
