@@ -22,14 +22,12 @@ public class Customervalidator implements Validator {
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-	Customer customer=(Customer) obj;
-	
-	if(customer.getFirstName()==""){
-		errors.rejectValue("firstName", "first name shouldn't be empty");
-	}
-		
-	}
+		Customer customer = (Customer) obj;
 
+		if (customer.getFirstName() == "") {
+			errors.rejectValue("firstName", "first name shouldn't be empty");
+		}
 
+	}
 
 }
