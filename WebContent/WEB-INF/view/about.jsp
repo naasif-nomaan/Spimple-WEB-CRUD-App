@@ -55,8 +55,7 @@
 				<br>
 				<ul class="nav navbar-nav">
 					<li ><a
-						href="${pageContext.request.contextPath}/"> <strong>All
-								Customers</strong></a></li>
+						href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
 					<li><c:if
 							test="${pageContext.request.userPrincipal.name != null}">
 							<a href="${pageContext.request.contextPath}/customermanagement">

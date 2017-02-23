@@ -55,8 +55,7 @@
 				<br> <br> <br>
 				<ul class="nav navbar-nav">
 					<li ><a
-						href="${pageContext.request.contextPath}/"> <strong>All
-								Customers</strong></a></li>
+						href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
 					<li ><c:if
 							test="${pageContext.request.userPrincipal.name != null}">
 							<a href="${pageContext.request.contextPath}/customermanagement">
@@ -102,7 +101,7 @@
 	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-lg">
-			<h3 class="text-center text-primary">Edit Customer</h3>
+			<h3 class="text-center text-primary">Customer Manager</h3>
 
 		</div>
 
