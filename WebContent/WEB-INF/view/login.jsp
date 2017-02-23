@@ -21,20 +21,6 @@
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet">
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="${pageContext.request.contextPath}/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="${pageContext.request.contextPath}/resources/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<!-- Custom styles for this template -->
 
 
 </head>
@@ -72,15 +58,35 @@
 					<li ><a
 						href="${pageContext.request.contextPath}/"> <strong>All
 								Customers</strong></a></li>
-					<li ><a
-						href="${pageContext.request.contextPath}/customermanagement">
-							<Strong>Customer Manager</Strong>
-					</a></li>
-                    <li><a 
-						href="${pageContext.request.contextPath}/about">
-							<Strong>About</Strong>
+					<li ><c:if
+							test="${pageContext.request.userPrincipal.name != null}">
+							<a href="${pageContext.request.contextPath}/customermanagement">
+								<Strong>Customer Manager</Strong>
+							</a>
+						</c:if></li>
+					<li><a href="${pageContext.request.contextPath}/about"> <Strong>About</Strong>
 					</a></li>
 
+					<!-- login -->
+                   <li><c:if
+							test="${pageContext.request.userPrincipal.name == null}">
+							<a class="log" href="${pageContext.request.contextPath}/login">
+								<Strong>Login</Strong>
+							</a>
+						</c:if></li>
+
+
+					<!-- logout -->
+					<li><c:if
+							test="${pageContext.request.userPrincipal.name != null}">
+							<a class="logt"
+								href="javascript:document.getElementById('logout').submit()"><Strong>Logout</Strong></a>
+						</c:if></li>
+					<c:url value="/logout" var="logoutUrl" />
+					<form id="logout" action="${logoutUrl}" method="post">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</form>
 
 				</ul>
 
@@ -234,6 +240,4 @@
 	
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="${pageContext.request.contextPath}/resources/js/vendor/holder.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
+   

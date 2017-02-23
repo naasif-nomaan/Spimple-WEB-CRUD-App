@@ -56,22 +56,7 @@ public class CustomerController {
 			BindingResult result) {
 
 		if (result.hasErrors()) {
-			// checking email address is already exists or not
-			for (Iterator<Customer> itarator = customerService.getAllAbsoluteCustomer().listIterator(); itarator
-					.hasNext();) {
-				Customer c = itarator.next();
-				if (c.getEmail().equals(theCustomer.getEmail())) {
 
-					if (c.getEnabled().equals("true")) {
-						model.addAttribute("mes", "This email already exists! and Enabled");
-						return "newCustomer";
-					} else {
-						model.addAttribute("mes", "This email already exists! and Disabled");
-						return "newCustomer";
-					}
-
-				}
-			}
 			return "newCustomer";
 
 		}
@@ -83,10 +68,10 @@ public class CustomerController {
 			if (c.getEmail().equals(theCustomer.getEmail())) {
 
 				if (c.getEnabled().equals("true")) {
-					model.addAttribute("mes", "This email already exists! and Enabled");
+					result.rejectValue("email", "ExistEmail.customer.email");
 					return "newCustomer";
 				} else {
-					model.addAttribute("mes", "This email already exists! and Disabled");
+					result.rejectValue("email", "ExistEmailD.customer.email");
 					return "newCustomer";
 				}
 

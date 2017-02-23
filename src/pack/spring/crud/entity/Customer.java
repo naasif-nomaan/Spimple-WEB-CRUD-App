@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 import javax.xml.ws.soap.Addressing;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.jboss.logging.Message;
 
@@ -23,29 +24,30 @@ public class Customer {
 	private int id;
 
 	@Column(name = "first_name")
-	@NotNull
-	@Size(min = 3, max = 100, message = "first name must be between 3 to 100 char")
+	@NotBlank
+	@Size(min = 3, max = 100)
 	private String firstName;
 
 	@Column(name = "last_name")
-	@NotNull
-	@Size(min = 3, max = 100, message = "last name must be between 3 to 100 char")
+	@NotBlank
+	@Size(min = 3, max = 100)
 	private String lastName;
 
 	@Column(name = "email")
-	@Email(regexp = ".*\\@.*\\..*", message = "Not a valid email address")
+	@NotBlank
+	@Email(regexp = ".*\\@.*\\..*")
 	private String email;
 
 	@Column(name = "address")
-	@NotNull
-	@Size(min = 10, max = 250, message = "Address should be between 10 to 250 char")
+	@NotBlank
+	@Size(min = 10, max = 250)
 	private String address;
 
 	@Column(name = "mobile_no")
 	@Mobile
-	@NotNull
-	@Size(min = 1, message = "Mobile Number Shouldn't be empty")
-	@Pattern(regexp = "(^$|[0-9]{11})", message = "please enter a valid mobile number and it must be 11 digits")
+	@NotBlank
+	@Size(min = 1)
+	@Pattern(regexp = "(^$|[0-9]{11})")
 	private String mobile_no;
 
 	@Column(name = "enabled")

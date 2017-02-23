@@ -21,7 +21,11 @@ public class HomeController {
 		model.addAttribute("customers", customerService.getAllCustomer());
 		return "index";
 	}
-	
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		model.addAttribute("customers", customerService.getAllCustomer());
+		return "index";
+	}
 	
 	@GetMapping("/accessdenied")
 	public String showDenied(Model model) {

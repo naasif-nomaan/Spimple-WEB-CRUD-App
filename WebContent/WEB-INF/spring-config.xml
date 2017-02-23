@@ -32,6 +32,9 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basename" value="pack.spring.crud.message.messages"></property>
+	</bean>
 	
 	
     <!-- Step 1: Define Database DataSource / connection pool -->
@@ -72,7 +75,7 @@
 	
 	
 	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
-
+ 
 
 
 
