@@ -9,7 +9,7 @@
 
 	<security:authentication-manager>
 		<security:authentication-provider>
-		<security:jdbc-user-service data-source-ref="myDataSource"/>
+		<security:jdbc-user-service data-source-ref="myDataSource" id="mydata"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 
@@ -53,6 +53,9 @@
 		<security:logout logout-success-url="/" logout-url="/logout" />
 		
 		<security:access-denied-handler error-page="/accessdenied"/>
+		<security:remember-me key="remember" user-service-ref="mydata"/>
+		
+		
 	</security:http>
 
 </beans>

@@ -9,13 +9,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
 <title>Login Page</title>
 
 <!-- Bootstrap core CSS -->
@@ -53,12 +53,9 @@
 
 
 				</ul>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<ul class="nav navbar-nav">
-					<li ><a
-						href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
+					<li><a href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
 					<li><sec:authorize access="hasRole('ROLE_ADMIN')">
 							<a href="${pageContext.request.contextPath}/customermanagement">
 								<Strong>Customer Manager</Strong>
@@ -94,75 +91,96 @@
 		</nav>
 
 	</div>
-	
-		<div class="container">
+
+	<div class="container">
 		<div class="page-header"></div>
 		<div class="well well-sm">
 			<h3 class="text-center text-primary">Login Page</h3>
 
 		</div>
-			<div class="col-sm-4"></div>
+		<div class="col-sm-4"></div>
 		<div class="col-sm-4 text-left ">
-		
-    
-	<form onsubmit="return validateForm()" name='f' action='${pageContext.request.contextPath}/login' method='POST' >
-	<c:if test="${param.error!=null}">
-	<p class="text-danger">Invalid username and password!! Try again.</p>
-	</c:if>
-	<div class="form-group">
-	<h4 ><strong class="text-primary">Email or Username : </strong></h4>
-		<div class="input-group">
-		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input type='text' name='username' value='' class="form-control" >
-     
-		</div>
-		<h4 ><strong class="text-primary">Password : </strong></h4>
-				<div class="input-group">
-		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-        <input type='password' name='password' class="form-control"/>
-     
-		</div>
-		<br>
-		<div class="input-group pull-right">
-		
-       <input name="submit" class="btn btn-primary" type="submit"
-					value="Login" />
-		<input name="_csrf" type="hidden" value="${_csrf.token}" />	
-     
-		</div>
-		
-		</div>
-		
-		    
 
-				
-	
-	</form>
-	</div>
+
+			<form onsubmit="return validateForm()" name='f'
+				action='${pageContext.request.contextPath}/login' method='POST'>
+				<c:if test="${param.error!=null}">
+					<p class="text-danger">Invalid username and password!! Try
+						again.</p>
+				</c:if>
+				<div class="form-group">
+					<h4>
+						<strong class="text-primary">Email or Username : </strong>
+					</h4>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type='text'
+							name='username' value='' class="form-control">
+
+					</div>
+					<h4>
+						<strong class="text-primary">Password : </strong>
+					</h4>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-lock"></i></span> <input type='password'
+							name='password' class="form-control" />
+
+					</div>
+					<br>
+					
+					<div class="input-group">
+						  <strong class="text-primary"><input type="checkbox" name="remember-me" checked="checked" />Remember Me</strong>
+                       
+					</div>
+					<div class="input-group pull-right">
+
+						<input name="submit" class="btn btn-primary" type="submit"
+							value="Login" /> <input name="_csrf" type="hidden"
+							value="${_csrf.token}" />
+
+					</div>
+
+				</div>
+
+
+
+
+
+			</form>
+		</div>
 		<div class="col-sm-3"></div>
 	</div>
- <hr class="featurette-divider">
-      <!-- START THE FEATURETTES -->
-
-     
-
-      <!-- /END THE FEATURETTES -->
+	<hr class="featurette-divider">
+	<!-- START THE FEATURETTES -->
 
 
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
 
-    </div><!-- /.container -->
+	<!-- /END THE FEATURETTES -->
 
 
-    <!-- Bootstrap core JavaScript
+	<!-- FOOTER -->
+	<footer>
+	<p class="pull-right">
+		<a href="#">Back to top</a>
+	</p>
+	<p>
+		&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a
+			href="#">Terms</a>
+	</p>
+	</footer>
+
+	</div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"></script></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-3.1.1.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"></script>
+	</script>
 	<script>
  function validateForm() {
     var x =  document.getElementById("login-email").value;
@@ -236,7 +254,7 @@
 
 
 </script>
-	
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-   
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
