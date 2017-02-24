@@ -3,6 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -56,30 +58,28 @@
 <ul class="nav navbar-nav">
 					<li ><a
 						href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
-					<li ><c:if
-							test="${pageContext.request.userPrincipal.name != null}">
+					<li><sec:authorize access="hasRole('ROLE_ADMIN')">
 							<a href="${pageContext.request.contextPath}/customermanagement">
 								<Strong>Customer Manager</Strong>
 							</a>
-						</c:if></li>
+						</sec:authorize></li>
 					<li><a href="${pageContext.request.contextPath}/about"> <Strong>About</Strong>
 					</a></li>
 
 					<!-- login -->
-                   <li><c:if
-							test="${pageContext.request.userPrincipal.name == null}">
+					<li><sec:authorize access="!isAuthenticated()">
 							<a class="log" href="${pageContext.request.contextPath}/login">
 								<Strong>Login</Strong>
 							</a>
-						</c:if></li>
+						</sec:authorize></li>
 
 
 					<!-- logout -->
-					<li><c:if
-							test="${pageContext.request.userPrincipal.name != null}">
+					<li><sec:authorize access="isAuthenticated()">
 							<a class="logt"
 								href="javascript:document.getElementById('logout').submit()"><Strong>Logout</Strong></a>
-						</c:if></li>
+						</sec:authorize></li>
+
 					<c:url value="/logout" var="logoutUrl" />
 					<form id="logout" action="${logoutUrl}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}"
