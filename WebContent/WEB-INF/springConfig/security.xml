@@ -17,11 +17,11 @@
 	<security:http use-expressions="true">
 
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/logout" access="isAuthenticated()" />
+		<security:intercept-url pattern="/logout" access="isAuthenticated()" method="POST" />
 		<security:intercept-url pattern="/about"
 			access="permitAll" />
 		<security:intercept-url pattern="/search"
-			access="permitAll" />
+			access="permitAll" method="POST" />
 		<security:intercept-url pattern="/customermanagement"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/createcustomer"
@@ -29,17 +29,17 @@
 		<security:intercept-url pattern="/customermanagement"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/searchall"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('ROLE_ADMIN')"  method="POST" />
 		<security:intercept-url pattern="/editcustomer"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/create"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('ROLE_ADMIN')" method="POST" />
 		<security:intercept-url pattern="/update"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('ROLE_ADMIN')" method="POST" />
 		<security:intercept-url pattern="/editcustomerby"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('ROLE_ADMIN')" method="GET" />
 		<security:intercept-url pattern="/deleteLink"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('ROLE_ADMIN')" method="GET"/>
 
 		<security:intercept-url pattern="/createcustomer"
 			access="hasRole('ROLE_ADMIN')" />
@@ -55,7 +55,7 @@
 		<security:access-denied-handler error-page="/accessdenied"/>
 		
 		<security:session-management invalid-session-url="/login" >
-		<security:concurrency-control expired-url="/login" />
+		<security:concurrency-control expired-url="/login"/>
 		
 		</security:session-management>
 			<security:intercept-url pattern="/**" access="denyAll" />
