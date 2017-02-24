@@ -17,7 +17,7 @@
 	<security:http use-expressions="true">
 
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/logout" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="isAuthenticated()" />
 		<security:intercept-url pattern="/about"
 			access="permitAll" />
 		<security:intercept-url pattern="/search"
@@ -47,15 +47,18 @@
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/resources/**"
 			access="permitAll" />
-		<security:intercept-url pattern="/**" access="denyAll" />
+	   
 		<security:form-login login-page='/login' />
-		
-		<security:logout logout-success-url="/" logout-url="/logout" />
+		<security:remember-me key="remember" user-service-ref="mydata" token-validity-seconds="432000"/>
+		<security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" delete-cookies="JSESSIONID"/>
 		
 		<security:access-denied-handler error-page="/accessdenied"/>
-		<security:remember-me key="remember" user-service-ref="mydata"/>
 		
+		<security:session-management invalid-session-url="/login" >
+		<security:concurrency-control expired-url="/login" />
 		
+		</security:session-management>
+			<security:intercept-url pattern="/**" access="denyAll" />
 	</security:http>
 
 </beans>
