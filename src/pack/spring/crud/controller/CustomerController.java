@@ -48,6 +48,7 @@ public class CustomerController {
 	@GetMapping("/editcustomer")
 	public String editCustomerPage(Model model) {
 		model.addAttribute("customers", customerService.getAllAbsoluteCustomer());
+		model.addAttribute("customer", new Customer());
 		return "editcustomer";
 	}
 
@@ -100,19 +101,19 @@ public class CustomerController {
 
 	}
 
-	@GetMapping("/editcustomerby")
-	public String editCustomer(@RequestParam("customerId") int id, Model model) {
+	@PostMapping("/editcustomerby")
+	public String editCustomer( Model model, @ModelAttribute("customer") Customer thecustomer) {
 
-		Customer customer = customerService.getCustomerById(id);
+		Customer customer = customerService.getCustomerById(thecustomer.getId());
 
 		model.addAttribute("customer", customer);
 
 		return "update";
 	}
 
-	@GetMapping("/deleteLink")
-	public String deleteCustomer(@RequestParam("customerId") int id, Model model) {
-		customerService.deleteCustomerById(id);
+	@PostMapping("/deleteLink")
+	public String deleteCustomer(Model model, @ModelAttribute("customer") Customer thecustomer) {
+		customerService.deleteCustomerById(thecustomer.getId());
 		model.addAttribute("customers", customerService.getAllAbsoluteCustomer());
 		return "editcustomer";
 	}

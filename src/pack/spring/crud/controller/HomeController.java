@@ -1,14 +1,18 @@
 package pack.spring.crud.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pack.spring.crud.dao.CustomerDAO;
+import pack.spring.crud.entity.Customer;
 import pack.spring.crud.service.CustomerService;
 
 @Controller
@@ -63,12 +67,14 @@ public class HomeController {
 		if (data.equals("")) {
 			model.addAttribute("msg", "Please Write Something to search!");
 			model.addAttribute("customers", customerService.searchAll(data));
+			model.addAttribute("customer", new Customer());
 			return "searchall";
 		}
 		model.addAttribute("msg", data);
 		model.addAttribute("customers", customerService.searchAll(data));
-
+		model.addAttribute("customer", new Customer());
 		return "searchall";
 	}
+	
 
 }

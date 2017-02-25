@@ -15,7 +15,7 @@
 
 
 	<security:http use-expressions="true">
-
+     
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/logout" access="isAuthenticated()" method="POST" />
 		<security:intercept-url pattern="/about"
@@ -37,9 +37,9 @@
 		<security:intercept-url pattern="/update"
 			access="hasRole('ROLE_ADMIN')" method="POST" />
 		<security:intercept-url pattern="/editcustomerby"
-			access="hasRole('ROLE_ADMIN')" method="GET" />
+			access="hasRole('ROLE_ADMIN')"  method="POST" />
 		<security:intercept-url pattern="/deleteLink"
-			access="hasRole('ROLE_ADMIN')" method="GET"/>
+			access="hasRole('ROLE_ADMIN')" method="POST"/>
 
 		<security:intercept-url pattern="/createcustomer"
 			access="hasRole('ROLE_ADMIN')" />
@@ -48,7 +48,7 @@
 		<security:intercept-url pattern="/resources/**"
 			access="permitAll" />
 	   
-		<security:form-login login-page='/login' />
+		<security:form-login login-page='/login'  default-target-url="/customermanagement"/>
 		<security:remember-me key="remember" user-service-ref="mydata" token-validity-seconds="432000"/>
 		<security:logout logout-success-url="/" logout-url="/logout" invalidate-session="true" delete-cookies="JSESSIONID"/>
 		

@@ -56,7 +56,7 @@
 				<br>
 				<br>
 				<br>
-				<ul class="nav navbar-nav">
+								<ul class="nav navbar-nav">
 					<li ><a
 						href="${pageContext.request.contextPath}/"> <strong>Home</strong></a></li>
 					<li><sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -68,20 +68,19 @@
 					</a></li>
 
 					<!-- login -->
-                   <li><c:if
-							test="${pageContext.request.userPrincipal.name == null}">
+					<li><sec:authorize access="!isAuthenticated()">
 							<a class="log" href="${pageContext.request.contextPath}/login">
 								<Strong>Login</Strong>
 							</a>
-						</c:if></li>
+						</sec:authorize></li>
 
 
 					<!-- logout -->
-					<li><c:if
-							test="${pageContext.request.userPrincipal.name != null}">
+					<li><sec:authorize access="isAuthenticated()">
 							<a class="logt"
 								href="javascript:document.getElementById('logout').submit()"><Strong>Logout</Strong></a>
-						</c:if></li>
+						</sec:authorize></li>
+
 					<c:url value="/logout" var="logoutUrl" />
 					<form id="logout" action="${logoutUrl}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}"

@@ -131,7 +131,7 @@
 					<th class="text-center">Enabled</th>
 					<th class="text-center">Edit or Delete</th>
 				</tr>
-				<c:forEach var="tempCustomer" items="${customers}">
+				<c:forEach var="tempCustomer"  varStatus="status" items="${customers}">
 					<tr class="text-center ">
 						<td>${tempCustomer.firstName}</td>
 						<td>${tempCustomer.lastName}</td>
@@ -143,12 +143,22 @@
 								<c:param name="customerId" value="${tempCustomer.id}" />
 							</c:url> <c:url var="deleteLink" value="/deleteLink">
 								<c:param name="customerId" value="${tempCustomer.id}" />
-							</c:url> <a href="${updateLink}">Edit</a> | <a href="${deleteLink}" 
+							</c:url> <a  href="javascript:document.getElementById('${555+tempCustomer.id}').submit()">Edit</a> | <a href="javascript:document.getElementById('${666+tempCustomer.id}').submit()"
 							onclick="if (!(confirm('Are you sure you want to delete this Customer?'))) return false">
 								Delete</a></td>
 					</tr>
 
 
+                    <form:form  id="${555+tempCustomer.id}" modelAttribute="customer" action="${pageContext.request.contextPath}/editcustomerby" method="POST">
+					        
+							<form:hidden path="id" value="${tempCustomer.id}"/>
+					</form:form>
+					
+					<form:form   id="${666+tempCustomer.id}" modelAttribute="customer" action="${pageContext.request.contextPath}/deleteLink" method="POST">
+					        
+							<form:hidden path="id" value="${tempCustomer.id}"/>
+					</form:form>
+					
 				</c:forEach>
 
 
