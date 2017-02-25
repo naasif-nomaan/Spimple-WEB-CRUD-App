@@ -103,7 +103,7 @@
 		<div class="page-header"></div>
 		<div class="well well-lg">
 			<h3 class="text-center text-primary">About Developer</h3>
-           <h4>${cus}</h4>
+          
 		</div>
 		
 
