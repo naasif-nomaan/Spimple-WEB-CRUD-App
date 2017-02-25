@@ -3,8 +3,10 @@ package pack.spring.crud.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,10 +44,11 @@ public class HomeController {
 		return "login";
 	}
 	
+	
 
 	@GetMapping("/about")
 	public String showAbout(Model model) {
-
+      
 		return "about";
 	}
 

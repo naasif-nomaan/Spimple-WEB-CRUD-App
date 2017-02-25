@@ -8,7 +8,8 @@
 <title>Database Error</title>
 </head>
 <body>
-<h3>Unexpected database error!!</h3>
+<h3> Unforeseen Database error!!</h3>
+<p>Try after sometimes</p>
 <a href="${pageContext.request.contextPath}/">Go back to Homepage</a>
 </body>
 </html>
