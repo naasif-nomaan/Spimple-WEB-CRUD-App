@@ -80,8 +80,8 @@ public class CustomerController {
 		}
 
 		customerService.createCustomer(theCustomer);
-		model.addAttribute("customers", customerService.getAllCustomer());
-		return "index";
+		model.addAttribute("customers", customerService.getAllAbsoluteCustomer());
+		return "redirect:editcustomer";
 
 	}
 
@@ -97,7 +97,7 @@ public class CustomerController {
 
 		customerService.createCustomer(theCustomer);
 		model.addAttribute("customers", customerService.getAllAbsoluteCustomer());
-		return "editcustomer";
+		return "redirect:editcustomer";
 
 	}
 
@@ -115,7 +115,7 @@ public class CustomerController {
 	public String deleteCustomer(Model model, @ModelAttribute("customer") Customer thecustomer) {
 		customerService.deleteCustomerById(thecustomer.getId());
 		model.addAttribute("customers", customerService.getAllAbsoluteCustomer());
-		return "editcustomer";
+		return "redirect:editcustomer";
 	}
 
 }

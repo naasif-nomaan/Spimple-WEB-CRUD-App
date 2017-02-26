@@ -20,8 +20,8 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-	/WEB-INF/springConfig/spring-app-config.xml   
-	/WEB-INF/springConfig/spring-app-config2.xml  
+	/WEB-INF/springConfig/service.xml   
+	/WEB-INF/springConfig/dao.xml  
 	/WEB-INF/springConfig/security.xml  
 	</param-value>
   </context-param>
