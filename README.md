@@ -6,6 +6,7 @@ By Abdullah Omar Nasif
 
 # MySql Database Information
 Schema: music-store
+
 Username: Customer_Admin
 Password: Customer_Admin
 
