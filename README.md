@@ -8,6 +8,7 @@ By Abdullah Omar Nasif
 Schema: music-store
 
 Username: Customer_Admin
+
 Password: Customer_Admin
 
 Import resources available into "sql data" folder
