@@ -5,7 +5,7 @@ By Abdullah Omar Nasif
 
 #Login Info                         
 Username: admin
-password: 
+password: admin
 
 # MySql Database Information
 Schema: music-store
