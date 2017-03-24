@@ -106,9 +106,11 @@
 			<form onsubmit="return validateForm()" name='f'
 				action='${pageContext.request.contextPath}/login' method='POST'>
 				<c:if test="${param.error!=null}">
-					<p class="text-danger">Invalid username and password!! Try
+					<p class="text-danger">Invalid username or password!! Try
 						again.</p>
 				</c:if>
+				<p class="text"> </p>
+				
 				<div class="form-group">
 					<h4>
 						<strong class="text-primary">Email or Username : </strong>
